@@ -33,6 +33,7 @@ func main() {
 
 /*
 	输入方法
+	TODO 校验输入
 */
 func input(i int) float64 {
 	var coordX1 float64
@@ -60,5 +61,6 @@ func input(i int) float64 {
 	计算斜率
 */
 func calc(coordX1 float64, coordY1 float64, coordX2 float64, coordY2 float64) float64 {
+	//TODO 其他情况
 	return (coordY2 - coordY1) / (coordX2 - coordX1)
 }
