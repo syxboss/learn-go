@@ -7,7 +7,7 @@ func main() {
 	var b [3]int = [3]int{}
 	//var c [3]int = [4]int{} //Cannot use '[4]int{}' (type [4]int) as the type [3]int
 	d := [5]int{}
-	e := [...]int{1, 2, 3, 4} // 数组...是什么意思？
+	e := [...]int{1, 2, 3, 4} // 数组...是什么意思？ 长度不需要管理，有多少就是多少
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(d)
@@ -50,20 +50,37 @@ func main() {
 	}
 	fmt.Println("======================")
 
+	//var num *int // 指针类型，没有指向变量的时候就会直接退出
+
 	// 多维数组
 	p := [3][3]int{}
 	p[0] = [3]int{1, 2, 3}
 	p[1] = [3]int{4, 5, 6}
 	p[2] = [3]int{7, 8, 9}
-	fmt.Println("原样打印：", p)
+
+	p1 := [...][3]int{
+		[3]int{1, 2, 3},
+		[3]int{4, 5, 6},
+		[3]int{7, 8, 9},
+	}
+	fmt.Println("p1原样打印：", p1)
+	fmt.Println("p原样打印：", p)
 
 	// 多维数组遍历操作
 	for i := 0; i < len(p); i++ {
 		fmt.Println("打印第一层:", p[i])
 	}
+
+	// 多层遍历，每次遍历降低一次维度
 	for i, val := range p {
 		for index, item := range val {
 			fmt.Printf("这是第一层第%d个，第二层第%d个，值为%d\n", i+1, index+1, item)
 		}
 	}
+
+	// 数组不支持运算，比如数组之间的加法
+	aa := []int{} // 切片
+	fmt.Println(aa)
+	bb := [0]int{} // 数组
+	fmt.Println(bb)
 }

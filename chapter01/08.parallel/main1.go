@@ -5,8 +5,8 @@ import "fmt"
 /*
 判断两条线是否平行
 	提示：
-	两点决定一条直线
-	两条线是否平行取决于两条线的斜率是否一样
+		两点决定一条直线
+		两条线是否平行取决于两条线的斜率是否一样
 */
 func main() {
 	for {
@@ -52,6 +52,7 @@ func input(i int) float64 {
 	fmt.Print("请输入第", i+1, "条直线的第二个坐标（y）：")
 	fmt.Scan(&coordY2)
 
+	fmt.Println("")
 	//计算两个斜率，并保存到k数组中
 	return calc(coordX1, coordY1, coordX2, coordY2)
 
