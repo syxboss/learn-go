@@ -1,10 +1,15 @@
 package main
 
 import (
+	//. "fmt" //扩展包
 	"fmt"
+	_ "go/token" // 只引用
 	"learn.go/chapter02/05.fatrate.refactorPackage/calc"
+	c01 "learn.go/chapter02/05.fatrate.refactorPackage/calc_Upgrade"
 )
 
+//ctrl + shift + -
+//大写字母开头是公开的，小写是不公开的，注意中文不属于大写字母，建议不要写中文
 func init() {
 	fmt.Println("我是init函数")
 }
@@ -147,6 +152,7 @@ func getHealthinessSuggestionMale(age int, fatRate float64) {
 
 func calcFatRate(weight float64, tall float64, age int, sex string) float64 {
 	bmi := calc.CalcBMI(tall, weight)
+	bmi = c01.CalcBMI(tall, weight) // 别名方法
 	fatRate := calc.CalcFatRate(bmi, age, sex)
 	fmt.Println("体脂率是：", fatRate)
 	return fatRate

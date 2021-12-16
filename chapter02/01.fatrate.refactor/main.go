@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime/debug"
+)
 
 // 特殊函数init
 // 自动调用，不能主动调用
@@ -23,12 +26,21 @@ func main() {
 	}
 }
 
+func recoverMainBody() {
+	if re := recover(); re != nil {
+		fmt.Printf("warning：catch error %v\n", re)
+		debug.PrintStack() //打印调用栈
+	}
+}
 func mainFatRateBody() {
 	weight, tall, age, sex, sexWeight := getMaterialsFromImput()
 
 	// fixme
 	// 计算体脂
 	fatRate := calcFatRate(weight, tall, age, sexWeight)
+	if fatRate == 0 {
+		panic("fat rate is not allowed to be active!")
+	}
 
 	// 得到健康提示
 	getHealthinessSuggestions(sex, age, fatRate, getHealthinessSuggestionMale)
