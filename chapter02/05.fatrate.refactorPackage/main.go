@@ -5,7 +5,7 @@ import (
 	"fmt"
 	_ "go/token" // 只引用
 	"learn.go/chapter02/05.fatrate.refactorPackage/calc"
-	c01 "learn.go/chapter02/05.fatrate.refactorPackage/calc_Upgrade"
+	c01 "learn.go/chapter02/05.fatrate.refactorPackage/calc_Upgrade" //Unused import
 )
 
 //ctrl + shift + -
