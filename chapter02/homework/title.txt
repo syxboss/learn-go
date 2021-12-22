@@ -1,3 +1,3 @@
-使用 GitHub 上的公有函数来实现功能
-自己重写 BMI 计算器、体脂计算器，用 module replace 替换 GitHub 上的
+使用 GitHub 上的公有函数来实现功能  √
+自己重写 BMI 计算器、体脂计算器，用 module replace 替换 GitHub 上的  √
 使用 vendor 为项目依赖提供保障

@@ -1,13 +1,10 @@
 package calc
 
-func CalcFatRate(bmi float64, age int, sex string) (fatRate float64) {
-	sexWeight := 0
-	if sex == "男" {
-		sexWeight = 1
-	} else {
-		sexWeight = 0
+import gobmi "github.com/syxboss/awesomeProject" // replace掉之后是原来的路径，别忘了修改！
 
-	}
-	fatRate = (1.2*bmi + 0.23*float64(age) - 5.4 - 10.8*float64(sexWeight)) / 100
+func CalcFatRate(bmi float64, age int, sex string) (fatRate float64) {
+	//gobmi.CalcFatRate(bmi,age,sex)  //gobmi "learn.go/staging/src/github.com/syxboss/awesomeProject"
+	fatRate = gobmi.CalcFatRate(bmi, age, sex)
+
 	return
 }

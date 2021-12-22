@@ -4,7 +4,7 @@ import (
 	//. "fmt" //扩展包
 	"fmt"
 	_ "go/token" // 只引用
-	"learn.go/chapter02/05.fatrate.refactorPackage/calc"
+	"learn.go/chapter03/01.fatrate.refactor/calc"
 )
 
 //ctrl + shift + -
@@ -32,7 +32,14 @@ func mainFatRateBody() {
 
 	// fixme
 	// 计算体脂
-	fatRate := calcFatRate(weight, tall, age, sex)
+	fatRate, err := calcFatRate(weight, tall, age, sex)
+	if err != nil {
+		fmt.Println("warning ：计算体脂率出错，不能再继续！", err)
+		return
+	}
+	if fatRate <= 0 {
+		panic("fatRate is not allowed to be negative")
+	}
 
 	// 得到健康提示
 	getHealthinessSuggestions(sex, age, fatRate, getHealthinessSuggestionMale)
@@ -149,11 +156,11 @@ func getHealthinessSuggestionMale(age int, fatRate float64) {
 	}
 }
 
-func calcFatRate(weight float64, tall float64, age int, sex string) float64 {
-	bmi := calc.CalcBMI(tall, weight)
-	fatRate := calc.CalcFatRate(bmi, age, sex)
+func calcFatRate(weight float64, tall float64, age int, sex string) (fatRate float64, err error) {
+	bmi, err := calc.CalcBMI(tall, weight)
+	fatRate = calc.CalcFatRate(bmi, age, sex)
 	fmt.Println("体脂率是：", fatRate)
-	return fatRate
+	return
 }
 
 // refactor -> rename
