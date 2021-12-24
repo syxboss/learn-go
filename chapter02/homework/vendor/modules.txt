@@ -1,0 +1,4 @@
+# github.com/armstrongli/learn.go v0.0.0-20211223132630-f6597d1d2ecc => ./staging/github.com/armstrongli/learn.go
+## explicit
+github.com/armstrongli/learn.go/chapter03/001.fatrate.refactor/calc
+# github.com/armstrongli/learn.go => ./staging/github.com/armstrongli/learn.go
