@@ -1,3 +1,3 @@
-module github.com/armstrongli/learn.go
+module learn.go
 
 go 1.15

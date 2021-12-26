@@ -1,6 +1,6 @@
 module learn.go
 
-go 1.15
+go 1.17
 
 replace (
 	github.com/spf13/cobra => github.com/syxboss/cobra v1.3.0 //放在github上

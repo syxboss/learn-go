@@ -1,6 +1,6 @@
 module learn.go/chapter02/homework
 
-go 1.15
+go 1.17
 
 replace github.com/armstrongli/learn.go => ./staging/github.com/armstrongli/learn.go
 
