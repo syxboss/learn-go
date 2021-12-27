@@ -2,6 +2,6 @@ module learn.go/chapter02/homework
 
 go 1.17
 
-replace github.com/armstrongli/learn.go => ./staging/github.com/armstrongli/learn.go
+replace github.com/armstrongli/go-bmi => ./staging/github.com/armstrongli/go-bmi
 
-require github.com/armstrongli/learn.go v0.0.0-20211223132630-f6597d1d2ecc
+require github.com/armstrongli/go-bmi v0.0.1

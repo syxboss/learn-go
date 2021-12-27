@@ -1,8 +1,6 @@
-package calculator
+package go_bmi
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func BMI(weightKG, heightM float64) (bmi float64, err error) {
 	fmt.Println("以下是最新是修改的BMI方法")
