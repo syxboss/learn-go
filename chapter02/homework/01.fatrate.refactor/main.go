@@ -5,14 +5,6 @@ import (
 	"learn.go/chapter02/homework/01.fatrate.refactor/calc"
 )
 
-func init() {
-	fmt.Println("我是init函数")
-}
-
-func init() {
-	fmt.Println("我是init1函数")
-}
-
 func main() {
 	for {
 		mainFatRateBody()
@@ -24,7 +16,7 @@ func main() {
 }
 
 func mainFatRateBody() {
-	weight, tall, age, sex, _ := getMaterialsFromImput()
+	weight, tall, age, sex := getMaterialsFromImput()
 
 	// 计算体脂
 	fatRate, err := calcFatRate(weight, tall, age, sex)
@@ -37,9 +29,7 @@ func mainFatRateBody() {
 	}
 
 	// 得到健康提示
-	getHealthinessSuggestions(sex, age, fatRate, getHealthinessSuggestionMale)
-	getHealthinessSuggestions(sex, age, fatRate, getHealthinessSuggestionFamle)
-
+	getHealthinessSuggestions(sex, age, fatRate)
 	// 特殊变量
 	check := getHealthinessSuggestions
 	fmt.Println(check)
@@ -47,8 +37,7 @@ func mainFatRateBody() {
 	fmt.Println(checkHealthinessFunc)
 }
 
-func getHealthinessSuggestions(sex string, age int, fatRate float64, getSuggestion func(age int, fatRate float64)) {
-	getSuggestion(age, fatRate) // 工具
+func getHealthinessSuggestions(sex string, age int, fatRate float64) {
 	switch sex {
 	case "男":
 		getHealthinessSuggestionMale(age, fatRate)
@@ -145,12 +134,14 @@ func getHealthinessSuggestionMale(age int, fatRate float64) {
 
 func calcFatRate(weight float64, tall float64, age int, sex string) (fatRate float64, err error) {
 	bmi, err := calc.CalcBMI(tall, weight)
-	fatRate = calc.CalcFatRate(bmi, age, sex)
-	fmt.Println("体脂率是：", fatRate)
+	if err != nil {
+		// todo
+	}
+	fatRate, err = calc.CalcFatRate(bmi, age, sex)
 	return
 }
 
-func getMaterialsFromImput() (float64, float64, int, string, int) {
+func getMaterialsFromImput() (float64, float64, int, string) {
 	// 录入各项
 	var name string
 	fmt.Print("请输入你的名字:")
@@ -172,9 +163,7 @@ func getMaterialsFromImput() (float64, float64, int, string, int) {
 	fmt.Print("请输入sex【男、女】:")
 	fmt.Scanln(&sex)
 
-	var sexWeight int
-
-	return weight, tall, age, sex, sexWeight
+	return weight, tall, age, sex
 }
 
 func whetherContinue() bool {

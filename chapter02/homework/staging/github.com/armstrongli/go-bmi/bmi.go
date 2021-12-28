@@ -2,21 +2,18 @@ package go_bmi
 
 import "fmt"
 
-func BMI(weightKG, heightM float64) (bmi float64, err error) {
-	fmt.Println("以下是最新是修改的BMI方法")
-	if weightKG < 0 {
-		err = fmt.Errorf("weight cannot be negative")
+func BMI(weight, height float64) (bmi float64, err error) {
+	fmt.Println("以下是在本地扩展过的BMI方法")
+	if weight <= 0 {
+		err = fmt.Errorf("weight cannot be negative or zero!")
 		return
 	}
-	if heightM < 0 {
-		err = fmt.Errorf("height cannot be negative")
+	if height <= 0 {
+		err = fmt.Errorf("height cannot be negative or zero!")
 		return
 	}
-	if heightM == 0 {
-		err = fmt.Errorf("height cannot be zero !")
-		return
-	}
-	bmi = weightKG / (heightM * heightM)
-	fmt.Println("===================")
+	fmt.Println("计算BMI")
+	bmi = weight / (height * height)
+	fmt.Println("计算BMI结束，BMI：", bmi)
 	return
 }
