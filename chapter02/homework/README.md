@@ -11,6 +11,3 @@
 #### 体脂率计算
 ./01.fatrate.refactor/calc/calc_fatRate.go
 ./01.fatrate.refactor/calc/calc_fatRate_test.go
-#### main方法测试
-./01.fatrate.refactor/main.go
-./01.fatrate.refactor/main_test.go
