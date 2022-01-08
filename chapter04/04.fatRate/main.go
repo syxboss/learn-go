@@ -3,17 +3,29 @@ package main
 import "fmt"
 
 func main() {
-	person := getFakePersonInfo()
-	c := Calc{}
-	c.BMI(person)
-	c.fatRate(person)
-	fmt.Println(person)
-	sug := suggestion{}
-	suggestions := sug.GetSuggestion(person)
-	fmt.Println(suggestions)
+	//person := getFakePersonInfo()
+	//c := Calc{}
+	//c.BMI(person)
+	//c.fatRate(person)
+	//fmt.Println(person)
+	//sug :=fatRateSuggestion{}
+	//suggestions := sug.GetSuggestion(person)
+	//fmt.Println(suggestions)
+
+	frSvc := &fatRateService{
+		s: GetFatRateSuggestion(),
+	}
+	fakePerson := getFakePersonInfo()
+	fmt.Println(frSvc.s.GiveSuggestionPerson(fakePerson))
+
+	for {
+		p := getPersonInfoFromInput()
+		fmt.Println(frSvc.s.GiveSuggestionPerson(p))
+	}
+
 }
 
-func getMaterialsFromImput() *Person {
+func getPersonInfoFromInput() *Person {
 	// 录入各项
 	var name string
 	fmt.Print("请输入你的名字:")
