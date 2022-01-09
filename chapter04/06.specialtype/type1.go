@@ -25,6 +25,16 @@ func main() {
 	}}
 	leader := vg.goRun()
 	fmt.Println(leader)
+	leader.Distribute()
+
+	var stdXQ = &student{name: "小强"}
+	var ldXQ Leader = Leader(*stdXQ) // 	var ldXQ leader = stdXQ   //
+	ldXQ.Distribute()
+
+	// 关联关系可以转换
+	/*bytesTest1 := []byte{}
+	var str1 = string(bytesTest1)
+	fmt.Println(str1)*/
 }
 
 func getScoresOfStudent(name string) (Math, English, Chinese) {
@@ -36,8 +46,8 @@ type voteGate struct {
 	students []*student
 }
 
-//func (g *voteGate) goRun()  (leader *student) {}
-func (g *voteGate) goRun() *leader {
+//func (g *voteGate) goRun()  (Leader *student) {}
+func (g *voteGate) goRun() *Leader {
 	for _, item := range g.students {
 		randIdx := rand.Int()
 		if randIdx%2 == 0 {
@@ -57,21 +67,29 @@ func (g *voteGate) goRun() *leader {
 		}
 	}
 	if maxScoreIndex >= 0 { // 判断是否大于0 ，因为如果没有学生，那么index就是默认值 -1
-		return g.students[maxScoreIndex]
+		return (*Leader)(g.students[maxScoreIndex])
 	}
 	return nil
 }
 
 // 使用嵌套兑现定义（继承）方式来定义班长
-//type leader struct {
+//type Leader struct {
 //	student
 //}
 
 // 使用类型重定义
-type leader = student
+type Leader student
 
-func (l *leader) Distribute() {
+func (l *Leader) Distribute() {
 	fmt.Println("发作业了")
+}
+
+// 指针无法定义,其他类型可以
+type FooooTestRedefine []string //*int //func()
+
+//Invalid receiver type 'FooooTestRedefine' ('FooooTestRedefine' is a pointer type)
+func (f FooooTestRedefine) test11() {
+
 }
 
 type student struct {
