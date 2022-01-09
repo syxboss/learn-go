@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 )
 
 type Math = int
@@ -88,8 +89,8 @@ func (l *Leader) Distribute() {
 type FooooTestRedefine []string //*int //func()
 
 //Invalid receiver type 'FooooTestRedefine' ('FooooTestRedefine' is a pointer type)
-func (f FooooTestRedefine) test11() {
-
+func (f FooooTestRedefine) Sort() {
+	sort.Strings(f)
 }
 
 type student struct {
