@@ -116,31 +116,6 @@ func (f *FatRateRank) UpdateUserInfo(i int) {
 				fmt.Println("当前修改用户信息 { ", "用户名称：", item.Name, " ，用户原体脂率：", item.FatRate, ",用户修改体脂率：", newFatRate, "} 不符合修改范围,实际修改范围应在[-0.2 ~ 0.2]之间")
 				break
 			}
-			rank, FatRate := f.getRank(currentName)
-			fmt.Println("更新用户信息如下：{", " 用户名称：", currentName, ", 体脂率:", FatRate, "， 用户排名:", rank, " }")
 		}
 	}
-}
-
-//获取排行
-func (f *FatRateRank) getRank(name string) (rank int, fatRate float64) {
-	frs := map[float64]struct{}{}
-	for _, item := range f.Persons {
-		frs[item.FatRate] = struct{}{}
-		if item.Name == name {
-			fatRate = item.FatRate
-		}
-	}
-	rankArr := make([]float64, 0, len(frs))
-	for k := range frs {
-		rankArr = append(rankArr, k)
-	}
-	sort.Float64s(rankArr)
-	for i, frItem := range rankArr {
-		if frItem == fatRate {
-			rank = i + 1
-			break
-		}
-	}
-	return rank, fatRate
 }
